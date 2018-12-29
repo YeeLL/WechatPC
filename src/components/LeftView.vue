@@ -1,67 +1,72 @@
 <template>
   <div class="left_content">
-    <header>
-      <img src="../assets/head.jpg" alt="头像" class="head">
-    </header>
+    <img src="../assets/head.jpg" alt="头像" class="head">
     <div class="mid">
-      <img src="../assets/chat_enable.png" alt="聊天" class="chat">
+      <img src="../assets/chat_enable.png" alt="聊天" class="chat" @click="toggle($event)">
       <img src="../assets/contact.png" alt="联系人" class="contact">
       <img src="../assets/meh.png" alt="我自己" class="me">
     </div>
-
-    <footer>
-      <img src="../assets/menu.png" alt="菜单" class="footer">
-    </footer>
+    <img src="../assets/menu.png" alt="菜单" class="footer">
   </div>
 </template>
 
 
 <script>
 export default {
-  name: "leftview"
+  name: "leftview",
+  data() {
+    return {
+      headIcon: "../assets/head.jpg",
+      chatIcon: "../assets/chat_enable.png",
+      contactIcon: "../assets/contact.png",
+      mehIcon: "../assets/meh.png"
+    };
+  },
+  methods: {
+    toggle: function(alt) {
+      console.log(alt.toElement.alt);
+      alt.toElement.alt = "jaajjaja";
+      console.log(alt.toElement.alt);
+      alt.toElement.src = this.mehIcon;
+    }
+  }
 };
 </script>
 
 
 <style>
-.chat {
-  margin-top: 25px;
-  width: 30px;
-  height: 30px;
-}
-.me {
-  margin-top: 15px;
-  width: 27px;
-  height: 27px;
-  margin-left: -2px;
-}
-.contact {
-  margin-top: 12px;
-  width: 30px;
-  height: 30px;
-}
-.mid {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .head {
-  width: 40px;
-  height: 40px;
+  margin-top: 20%;
+  margin-right: 10%;
+  margin-left: 10%;
+  width: 80%;
 }
 .footer {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 20px;
+  width: 60%;
+  margin-left: 20%;
+  position: absolute;
+  bottom: 5%;
 }
+.chat {
+  width: 60%;
+}
+.contact {
+  margin-top: 10%;
+  width: 60%;
+}
+.me {
+  margin-top: 10%;
+  width: 60%;
+}
+.mid {
+  margin-left: 20%;
+  margin-top: 25%;
+}
+
 .left_content {
-  width: 70px;
-  padding-top: 20px;
-  background-color: #434447;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  background-color: #2b2c2f;
+  height: 100%;
 }
 </style>
